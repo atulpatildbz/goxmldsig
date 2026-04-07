@@ -674,6 +674,14 @@ func isECDSAAlgorithm(algo x509.SignatureAlgorithm) bool {
 		algo == x509.ECDSAWithSHA512
 }
 
+// isECDSAAlgorithm checks if the signature algorithm is ECDSA-based
+func isECDSAAlgorithm(algo x509.SignatureAlgorithm) bool {
+	return algo == x509.ECDSAWithSHA1 ||
+		algo == x509.ECDSAWithSHA256 ||
+		algo == x509.ECDSAWithSHA384 ||
+		algo == x509.ECDSAWithSHA512
+}
+
 // Validate verifies that the passed element contains a valid enveloped signature
 // matching a currently-valid certificate in the context's CertificateStore.
 func (ctx *ValidationContext) Validate(el *etree.Element) (*etree.Element, error) {
